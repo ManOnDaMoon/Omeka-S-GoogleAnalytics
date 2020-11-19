@@ -207,11 +207,13 @@ class Module extends AbstractModule
 
             if((!empty($code))&&($code!='-'))
             {
-                $view->headScript()->appendScript("window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-                ga('create', '$code', 'auto');
-                ga('send', 'pageview');
+                $view->headScript()->appendFile('https://www.googletagmanager.com/gtag/js?id=' . $code, '', array('async'=>'true'));
+                $view->headScript()->appendScript("
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '" .$code . "');
                 ");
-                $view->headScript()->appendFile('https://www.google-analytics.com/analytics.js', '', array('async'=>'true'));
             }
         }
     }
