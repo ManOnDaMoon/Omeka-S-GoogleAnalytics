@@ -207,7 +207,7 @@ class Module extends AbstractModule
 
             if((!empty($code))&&($code!='-'))
             {
-                $view->headScript()->appendFile('https://www.googletagmanager.com/gtag/js?id=' . $code, '', array('async'=>'true'));
+                $view->headScript()->appendFile('https://www.googletagmanager.com/gtag.js?id=' . $code, '', array('async'=>'true'));
                 $view->headScript()->appendScript("
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
